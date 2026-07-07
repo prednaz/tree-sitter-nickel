@@ -393,12 +393,14 @@ export default grammar({
 
     str_chunks_multi: $ => seq(
       field("start", $.multstr_start),
-      field("chunks", repeat(choice(
-        $.chunk_expr,
-        $.chunk_literal_multi,
-      ))),
+      field("chunks", $.str_chunks_multi_content),
       field("end", $.multstr_end),
     ),
+
+    str_chunks_multi_content: $ => repeat(choice(
+      $.chunk_expr,
+      $.chunk_literal_multi,
+    )),
 
     //grammar.lalrpop: 480
     //NOTE: Because we cannot parameterize grammar rules, we instead create two

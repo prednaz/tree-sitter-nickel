@@ -1858,20 +1858,8 @@
           "type": "FIELD",
           "name": "chunks",
           "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "chunk_expr"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "chunk_literal_multi"
-                }
-              ]
-            }
+            "type": "SYMBOL",
+            "name": "str_chunks_multi_content"
           }
         },
         {
@@ -1883,6 +1871,22 @@
           }
         }
       ]
+    },
+    "str_chunks_multi_content": {
+      "type": "REPEAT",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "chunk_expr"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "chunk_literal_multi"
+          }
+        ]
+      }
     },
     "chunk_expr": {
       "type": "SEQ",
