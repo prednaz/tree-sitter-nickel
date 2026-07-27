@@ -11,7 +11,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "if|then|else|forall|in|let|rec|match|null|true|false|fun|import|merge|default|doc|force|optional|priority|not_exported"
+        "value": "if|then|else|forall|in|let|rec|match|null|true|false|fun|import|default|doc|force|optional|priority|not_exported"
       }
     },
     "num_literal": {
