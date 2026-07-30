@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.13)
 project(tree-sitter-nickel
         VERSION "0.6.0"
         DESCRIPTION "Nickel grammar for tree-sitter"
-        HOMEPAGE_URL "https://github.com/tree-sitter/tree-sitter-nickel"
+        HOMEPAGE_URL "https://github.com/nickel-lang/tree-sitter-nickel"
         LANGUAGES C)
 
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
@@ -14,6 +14,8 @@ if(NOT ${TREE_SITTER_ABI_VERSION} MATCHES "^[0-9]+$")
     unset(TREE_SITTER_ABI_VERSION CACHE)
     message(FATAL_ERROR "TREE_SITTER_ABI_VERSION must be an integer")
 endif()
+
+include(GNUInstallDirs)
 
 find_program(TREE_SITTER_CLI tree-sitter DOC "Tree-sitter CLI")
 
@@ -57,13 +59,11 @@ set_target_properties(tree-sitter-nickel
 configure_file(bindings/c/tree-sitter-nickel.pc.in
                "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-nickel.pc" @ONLY)
 
-include(GNUInstallDirs)
-
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bindings/c/tree_sitter"
         DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
         FILES_MATCHING PATTERN "*.h")
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-nickel.pc"
-        DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig")
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 install(TARGETS tree-sitter-nickel
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 
